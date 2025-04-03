@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granular Twist Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Granular Twist</h1>
+        <nav>
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#compatibility">Compatibility</a></li>
+                <li><a href="#interface">User Interface</a></li>
+                <li><a href="#parameters">Parameters</a></li>
+                <li><a href="#visualizer">Visualizer</a></li>
+                <li><a href="#usage">Usage Tips</a></li>
+                <li><a href="#troubleshooting">Troubleshooting</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>Granular Twist is a powerful granular synthesis plugin that transforms audio by breaking it into tiny "grains" and manipulating their properties to create unique, textured sounds. Whether you're aiming for subtle ambient layers or chaotic glitch effects, this plugin offers a range of controls to shape your audio. Key features include adjustable grain density, length, stereo panning, pitch variation, and envelope shaping, all with real-time visual feedback via an envelope visualizer.</p>
+            <h3>Key Features</h3>
+            <ul>
+                <li>Real-time granular synthesis for processing any audio input.</li>
+                <li>Customizable grain properties: density, length, panning, and pitch.</li>
+                <li>Advanced envelope controls for shaping grain amplitude.</li>
+                <li>Visualizer for real-time feedback on envelope shape.</li>
+                <li>Dry/wet mix control to blend processed and original signals.</li>
+            </ul>
+        </section>
+        <section id="installation">
+            <h2>Installation</h2>
+            <ol>
+                <li><strong>Download</strong> the plugin file (<code>GranularTwist.vst3</code>).</li>
+                <li><strong>Copy</strong> the file to your VST3 plugin directory:
+                    <ul>
+                        <li><strong>Windows</strong>: <code>C:\Program Files\Common Files\VST3</code></li>
+                        <li><strong>macOS</strong>: <code>/Library/Audio/Plug-Ins/VST3</code></li>
+                    </ul>
+                </li>
+                <li><strong>Rescan</strong> your plugins in your DAW to make Granular Twist available. Most DAWs have a plugin manager or rescan option—check your DAW’s documentation if needed.</li>
+            </ol>
+        </section>
+        <section id="compatibility">
+            <h2>Compatibility and System Requirements</h2>
+            <ul>
+                <li><strong>Plugin Format</strong>: VST3</li>
+                <li><strong>DAW Compatibility</strong>: Compatible with any DAW that supports VST3 plugins (e.g., Ableton Live, FL Studio, Reaper, etc.).</li>
+                <li><strong>Operating Systems</strong>: Tested on Windows 10 and macOS 10.14 or later.</li>
+                <li><strong>System Requirements</strong>: Granular synthesis can be CPU-intensive. For optimal performance, we recommend:
+                    <ul>
+                        <li>A modern multi-core processor.</li>
+                        <li>At least 4GB of RAM.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section id="interface">
+            <h2>User Interface Overview</h2>
+            <p>The Granular Twist interface is intuitive and organized into three main sections, with a visualizer for additional feedback:</p>
+            <ul>
+                <li><strong>Grain Section</strong>: Controls the fundamental properties of the grains, such as how often they occur, their duration, stereo placement, and pitch variation.</li>
+                <li><strong>Envelope Section</strong>: Shapes the amplitude envelope of each grain, determining how it fades in and out over time.</li>
+                <li><strong>Mix Section</strong>: Adjusts the balance between the original (dry) audio and the processed (wet) audio.</li>
+                <li><strong>Visualizer</strong>: Located below the Envelope section, this displays the current envelope shape based on your settings, updating in real-time as you tweak parameters.</li>
+            </ul>
+        </section>
+        <section id="parameters">
+            <h2>Parameter Descriptions</h2>
+            <h3>Grain Controls</h3>
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Range</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Grain Density</td>
+                    <td>0 to 50 grains per second</td>
+                    <td>Controls how frequently new grains are spawned. Low values create sparse, distinct grains; high values create dense, overlapping grains.</td>
+                </tr>
+                <tr>
+                    <td>Min Grain Length</td>
+                    <td>10 to 500 ms</td>
+                    <td>Sets the minimum duration of each grain. Shorter lengths produce percussive or glitchy sounds; longer lengths create smoother, sustained grains.</td>
+                </tr>
+                <tr>
+                    <td>Max Grain Length</td>
+                    <td>10 to 1000 ms</td>
+                    <td>Sets the maximum duration of each grain. Each grain’s length is randomly selected between Min and Max values.</td>
+                </tr>
+                <tr>
+                    <td>Pan Spread</td>
+                    <td>0 to 1</td>
+                    <td>Controls the stereo distribution of grains. 0 centers all grains; 1 pans grains randomly across the stereo field.</td>
+                </tr>
+                <tr>
+                    <td>Pitch Variance</td>
+                    <td>0 to 0.2</td>
+                    <td>Adds random pitch variation to each grain (±20% at max). 0 means no variation; 0.2 introduces significant randomness.</td>
+                </tr>
+            </table>
+            <h3>Envelope Controls</h3>
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Range</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Fade-In Shape</td>
+                    <td>0 to 1</td>
+                    <td>Adjusts the curvature of the fade-in portion. Below 0.5: gradual; 0.5: linear; above 0.5: abrupt.</td>
+                </tr>
+                <tr>
+                    <td>Fade-Out Shape</td>
+                    <td>0 to 1</td>
+                    <td>Adjusts the curvature of the fade-out portion. Below 0.5: gradual; 0.5: linear; above 0.5: abrupt.</td>
+                </tr>
+                <tr>
+                    <td>Fade Length Percentage</td>
+                    <td>0% to 100%</td>
+                    <td>Determines how much of the grain’s duration is spent fading. 0%: no fades; 100%: entire grain fades in and out.</td>
+                </tr>
+                <tr>
+                    <td>Fade Ratio</td>
+                    <td>0 to 1</td>
+                    <td>Controls the balance between fade-in and fade-out durations. 0: all fade-out; 0.5: equal; 1: all fade-in.</td>
+                </tr>
+            </table>
+            <h3>Mix Control</h3>
+            <table>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Range</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Mix</td>
+                    <td>0 to 1</td>
+                    <td>Blends dry and wet signals. 0: fully dry; 1: fully wet; 0.5: 50/50 blend.</td>
+                </tr>
+            </table>
+        </section>
+        <section id="visualizer">
+            <h2>Visualizer</h2>
+            <p>The visualizer provides a graphical representation of the grain envelope based on your current <strong>Fade-In Shape</strong>, <strong>Fade-Out Shape</strong>, <strong>Fade Length Percentage</strong>, and <strong>Fade Ratio</strong> settings. It updates in real-time as you adjust these parameters, showing how the grain’s amplitude rises and falls over its duration. This visual feedback helps you fine-tune the envelope to achieve your desired sound.</p>
+        </section>
+        <section id="usage">
+            <h2>Usage Tips</h2>
+            <ul>
+                <li><strong>Ambient Textures</strong>: Set Grain Density to 20, Min Grain Length to 200ms, Max Grain Length to 500ms, Pitch Variance to 0.05, Fade Length Percentage to 50%, Fade Ratio to 0.5, Fade-In Shape to 0.3, and Fade-Out Shape to 0.3 for smooth, evolving pads.</li>
+                <li><strong>Glitchy Effects</strong>: Use Grain Density at 50, Min Grain Length at 10ms, Max Grain Length at 50ms, Pitch Variance at 0.2, Fade Length Percentage at 20%, Fade Ratio at 0.5, Fade-In Shape at 0.7, and Fade-Out Shape at 0.7 for chaotic, stuttering textures.</li>
+                <li><strong>Dynamic Soundscapes</strong>: Automate Grain Density or Pitch Variance over time for evolving effects.</li>
+                <li><strong>Stereo Enhancement</strong>: Increase Pan Spread to widen the stereo image.</li>
+            </ul>
+        </section>
+        <section id="troubleshooting">
+            <h2>Troubleshooting</h2>
+            <ul>
+                <li><strong>Plugin Not Appearing in DAW</strong>: Verify the <code>.vst3</code> file is in the correct directory and rescan plugins in your DAW.</li>
+                <li><strong>High CPU Usage</strong>: Lower Grain Density or increase grain lengths to reduce CPU load.</li>
+                <li><strong>No Sound Output</strong>: Ensure Mix is not set to 0 and check audio routing in your DAW.</li>
+                <li><strong>Unexpected Behavior</strong>: Reset parameters to default or check for DAW/plugin updates.</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Granular Twist. All rights reserved.</p>
+    </footer>
+</body>
+</html>
